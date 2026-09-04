@@ -14,9 +14,10 @@ module "eks" {
   vpc_id = module.vpc.vpc_id
 
   eks_managed_node_group_defaults = {
-    ami_type               = "AL2_x86_64"
-    instance_types         = ["t3.medium"]
+    ami_type               = "CUSTOM"
+    instance_types         = ["c7i-flex.large"]
     vpc_security_group_ids = [aws_security_group.all_worker_mgmt.id]
+    ami_id                 = "ami-01a00762f46d584a1"
   }
 
   eks_managed_node_groups = {
